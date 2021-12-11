@@ -10,14 +10,15 @@
         :title="title"
         v-if="!$slots.tableTitle && title"
       />
+      <Divider type="vertical" v-if="!$slots.tableTitle && title" />
       <div :class="`${prefixCls}__toolbar`">
-        <slot name="toolbar"></slot>
-        <Divider type="vertical" v-if="$slots.toolbar && showTableSetting" />
         <TableSetting
           :setting="tableSetting"
           v-if="showTableSetting"
           @columns-change="handleColumnChange"
         />
+        <Divider type="vertical" v-if="$slots.toolbar && showTableSetting" />
+        <slot name="toolbar"></slot>
       </div>
     </div>
   </div>
@@ -71,7 +72,7 @@
       flex: 1;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: flex-start;
 
       > * {
         margin-right: 8px;
